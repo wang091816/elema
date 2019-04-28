@@ -2,6 +2,36 @@
   <div id="box1">
     <Header :list="list"></Header>
     <el-table :data="table" style="width: 100%">
+        <el-table-column type="expand">
+      <template slot-scope="props">
+        <el-form label-position="left" inline class="demo-table-expand">
+          <el-form-item label="食品名称">
+            <span>{{ props.row.name }}</span>
+          </el-form-item>
+          <el-form-item label="食品ID">
+            <span>{{ props.row.item_id }}</span>
+          </el-form-item>
+          <el-form-item label="餐馆ID">
+            <span>{{ props.row.category_id }}</span>
+          </el-form-item>
+          <el-form-item label="食品介绍">
+            <span>{{ props.row.phone }}</span>
+          </el-form-item>
+          <el-form-item label="餐馆地址">
+            <span>{{ props.row.rating }}</span>
+          </el-form-item>
+          <el-form-item label="食品评分">
+            <span>{{ props.row.rating }}</span>
+          </el-form-item>
+          <el-form-item label="食品分类">
+            <span>{{ props.row.category }}</span>
+          </el-form-item>
+           <el-form-item label="月销量">
+            <span>{{ props.row.month_sales }}</span>
+          </el-form-item>
+        </el-form>
+      </template>
+    </el-table-column>
       <el-table-column label="食品名称" width="320" property="name">
       
       </el-table-column>
@@ -50,7 +80,8 @@ export default {
     return {
       table: [],
       list: "",
-      currentPage1: 1
+      currentPage1: 1,
+      srr:0
     };
   },
   components: {
@@ -63,7 +94,7 @@ export default {
          console.log(item.data)
          this.table=item.data
     })
-    this.list = this.$route.params.headername;
+    this.list = this.$route.params.username;
   },
   methods: {
     handleEdit(index, row) {
@@ -77,6 +108,12 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+       this.srr=val-1
+       console.log(this.srr)
+      axios.get("https://elm.cangdu.org/shopping/v2/foods?offset"+"="+this.srr*20+"&limit=20&restaurant_id=undefined").then(item => {
+            console.log(item.data);
+            this.table=item.data
+            });
     }
   }
 };

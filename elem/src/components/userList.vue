@@ -10,6 +10,7 @@
     >
                                                                                         
       <el-table-column property="registe_time" label="日期" width="220">
+          
       </el-table-column>
       <el-table-column property="username" label="姓名" width="220">
       </el-table-column>
@@ -54,7 +55,7 @@ export default {
           this.tableData=item.data
          
       })
-    this.list = this.$route.params.headername;
+    this.list = this.$route.params.username;
   },
   methods: {
     setCurrent(row) {

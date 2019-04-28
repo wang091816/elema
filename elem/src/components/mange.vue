@@ -25,19 +25,19 @@
 	<!-- //数据管理 -->
         <template slot="title"><i class="el-icon-document"></i>数据管理</template>
         <el-menu-item-group>
-			<router-link tag="div"to="/userList">
+			<router-link tag="div" :to="{ name: 'UserList', params: { username: list} }">
           <el-menu-item index="1-1">用户列表</el-menu-item>
 		</router-link>
-	  <router-link tag="div"to="/shopList">
+	  <router-link tag="div" :to="{ name: 'ShopList', params: { username: food} }">
           <el-menu-item index="1-2">商家列表</el-menu-item>
 		  	</router-link>
-			<router-link tag="div"  to="/foodList">
+			<router-link tag="div"  :to="{ name: 'FoodList', params: { username: shipin} }">
           <el-menu-item index="1-3">食品列表</el-menu-item>
 		  </router-link>
-		  <router-link tag="div"  to="/orderList">
+		  <router-link tag="div"  :to="{ name: 'OrderList', params: { username: orderID} }">
           <el-menu-item index="1-4">订单列表</el-menu-item>
 		  </router-link>
-		  <router-link tag="div" to="/adminList">
+		  <router-link tag="div" :to="{ name: 'AdminList', params: { username: listing} }">
           <el-menu-item index="1-5">管理员列表</el-menu-item>
 		  </router-link>
 
@@ -137,7 +137,7 @@
     data() {
         
       return {
-        list:"首页/数据管理/用户列表 ",
+        list:"首页/数据管理/用户列表",
         food:"首页/数据管理/商家列表",
         shipin:"首页/数据管理/食品列表",
         orderID:"首页/数据管理/订单列表",

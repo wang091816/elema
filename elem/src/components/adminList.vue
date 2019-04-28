@@ -52,7 +52,7 @@ export default {
           console.log(item.data.data)
           this.table=item.data.data
       })
-    this.list = this.$route.params.headername;
+    this.list = this.$route.params.username;
   },
   methods: {
     handleEdit(index, row) {

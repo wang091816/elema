@@ -10,7 +10,6 @@
       </el-table-column>
       <el-table-column label="订单状态" width="320" property="status_bar.title">
        
-      
       </el-table-column>
       
       
@@ -49,7 +48,7 @@ export default {
           console.log(item.data)
           this.table=item.data
       })
-    this.list = this.$route.params.headername;
+    this.list = this.$route.params.username;
   },
   methods: {
     handleEdit(index, row) {
