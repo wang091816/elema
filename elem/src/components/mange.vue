@@ -31,13 +31,13 @@
 	  <router-link tag="div"to="/shopList">
           <el-menu-item index="1-2">商家列表</el-menu-item>
 		  	</router-link>
-			<router-link tag="div"  to="">
+			<router-link tag="div"  to="/foodList">
           <el-menu-item index="1-3">食品列表</el-menu-item>
 		  </router-link>
-		  <router-link tag="div"  to="">
+		  <router-link tag="div"  to="/orderList">
           <el-menu-item index="1-4">订单列表</el-menu-item>
 		  </router-link>
-		  <router-link tag="div" to="">
+		  <router-link tag="div" to="/adminList">
           <el-menu-item index="1-5">管理员列表</el-menu-item>
 		  </router-link>
 

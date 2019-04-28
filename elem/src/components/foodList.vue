@@ -2,23 +2,21 @@
   <div id="box1">
     <Header :list="list"></Header>
     <el-table :data="table" style="width: 100%">
-      <el-table-column label="店铺名称" width="320" property="name">
+      <el-table-column label="食品名称" width="320" property="name">
       
       </el-table-column>
-      <el-table-column label="店铺地址" width="320" property="address">
+      <el-table-column label="食品介绍" width="320" property="">
         
       </el-table-column>
-      <el-table-column label="店铺介绍" width="320" property="category">
+      <el-table-column label="评分" width="320" property="rating">
        
       
       </el-table-column>
+      
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
             >编辑</el-button
-          >
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-            >添加商品</el-button
           >
           <el-button
             size="mini"
@@ -59,15 +57,12 @@ export default {
     Header
   },
   created() {
-    axios
-      .get(
-        "https://elm.cangdu.org/shopping/restaurants?latitude=39.90469&longitude=116.407173&offset=0&limit=20"
-      )
-      .then(item => {
-        console.log(item.data);
-        this.table = item.data;
-      });
     // console.log(this.table)
+   
+    axios.get("https://elm.cangdu.org/shopping/v2/foods?offset=0&limit=20&restaurant_id=undefined").then((item)=>{
+         console.log(item.data)
+         this.table=item.data
+    })
     this.list = this.$route.params.headername;
   },
   methods: {
@@ -82,10 +77,6 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      axios.get("https://elm.cangdu.org/shopping/restaurants?latitude=39.90469&longitude=116.407173&offset"+"="+this.num*20+"&limit=20").then(item => {
-            console.log(item.data);
-            this.tableData=item.data
-            });
     }
   }
 };
